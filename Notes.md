@@ -1,287 +1,424 @@
-C Programming Notes 📝
+# C Programming Notes
 
+A collection of my beginner C programming notes and examples.
 
-Personal notes by ninjacodex | Learning journey documented from scratch
+---
 
+# Contents
 
+1. Hello World Program
+2. Data Variations
+3. scanf() Function
+4. Variables
+5. Data Types
+6. if-else and switch
+7. Loops
 
+---
 
-1) Hello World — The Basics
+# Hello World Program
 
-c#include <stdio.h>
-int main(){               // main function — int is the datatype along main func()
-    printf("Hello world \n");   // \n helps to break line and dont let casual use
-    return 0;
-}
-/* this is a cmt */
+A basic typical Hello World program in C language.
 
-
-2) Data Types
-
-TypesData TypesBasic Data Typeint, char, float, doubleDerived Data Typearray, pointer, structure, unionEnumeration Data TypeenumVoid Data Typevoid
-
-Data Type Examples
-
-c#include <stdio.h>
-int main(){
-    char name[]  = "Michel Bravo";
-    int age      = 24;
-    char grade   = 'A';
-    float value  = 3.14;
-    printf("Name  - %s\n", name);     // %s  = for string
-    printf("Age   - %d\n", age);      // %d  = for integer
-    printf("Grade - %c\n", grade);    // %c  = for single character
-    printf("Pi    - %.2f\n", value);  // %.2f = upto 2 decimal points
-    return 0;
-}
-
-
-NOTE: each and every placeholder like %d etc can only be used for a specific data type
-
-
-
-PlaceholderUse%sstring%dinteger%csingle character%.2ffloat upto 2 decimal points%uunsigned integer value
-
-
-3) Variables
-
-Invalid Variable Names
-
-
-int 1stNumber;   → Starts with a digit
-float my-salary; → Contains a hyphen (-)
-char int;        → Same as a C keyword
-int double;      → Same as a C keyword
-float my$var;    → Contains an unsupported special character
-
-
-Types of C Variables
-
-
-Static variable: A variable that retains its value throughout the program lifetime even after the function ends
-Automatic variable: A variable that exists only while a function is running and is destroyed when the function ends
-
-
-
-4) scanf() Function
-
-scanf() is utilized to take input from the user. It reads the input data from the console.
-
-scanf("format string", argument_list);
-
-
-Format string: defines the input type and includes format specifiers like %d, %c, %s, %f etc
-argument_list: provides the addresses of variables (by using &) where the input values will be stored
-
-
-c// Example 1 — cube of a number
+```c
 #include <stdio.h>
+
+int main(){
+    printf("Hello World\n");
+    return 0;
+}
+```
+
+### Notes
+
+* `main()` is the main function where program execution starts.
+* `int` is the return datatype of the function.
+* `\n` is used to move to the next line.
+* `return 0;` indicates successful execution.
+
+Comment example:
+
+```c
+/* this is a comment */
+```
+
+---
+
+# 1) DATA Variations
+
+## Integer Data Type
+
+```c
+#include <stdio.h>
+
+int main(){
+    int age = 25;
+    int year = 2025;
+
+    printf("ur age is\n%d", age);
+    printf("\nthe year is\n%d", year);
+
+    return 0;
+}
+```
+
+## Float Data Type
+
+```c
+float age = 23.2;
+```
+
+## Example Using Multiple Data Types
+
+```c
+#include <stdio.h>
+
+int main(){
+    char name[] = "Michel Bravo";
+    int age = 24;
+    char grade = 'A';
+    float value = 3.14;
+
+    printf("Name - %s\n", name);
+    printf("Age - %d\n", age);
+    printf("Grade - %c\n", grade);
+    printf("Pi - %.2f\n", value);
+
+    return 0;
+}
+```
+
+### Common Placeholders
+
+```text
+%s   = string
+%d   = integer
+%c   = single character
+%.2f = float upto 2 decimal places
+%u   = unsigned integer
+```
+
+Note: Each placeholder can only be used with its corresponding datatype.
+
+---
+
+# 2) scanf() Function
+
+The `scanf()` function is used to take input from the user.
+
+### Syntax
+
+```c
+scanf("format string", argument_list);
+```
+
+### Components
+
+* Format string defines the type of input.
+* Argument list contains addresses of variables using `&`.
+
+Example:
+
+```c
+#include <stdio.h>
+
 int main(){
     int x;
-    printf("enter a no :");
+
+    printf("Enter a number: ");
     scanf("%d", &x);
-    printf("the cube of number is :%d", x*x*x);
+
+    printf("The cube of number is: %d", x*x*x);
+
     return 0;
 }
+```
 
-// Example 2 — sum of two numbers
+### Note
+
+`&` is called the address-of operator.
+
+`scanf()` needs the memory address of a variable so that it can store the user's input inside that variable.
+
+### Example
+
+```c
 #include <stdio.h>
+
 int main(){
     int x = 0;
     int y = 0;
     int result = 0;
-    printf("Enter 1st number :");
+
+    printf("Enter 1st number: ");
     scanf("%d", &x);
-    printf("Enter 2nd number :");
+
+    printf("Enter 2nd number: ");
     scanf("%d", &y);
+
     result = x + y;
-    printf("the sum of 2 numbers is:%d", result);
+
+    printf("The sum of 2 numbers is: %d", result);
+
     return 0;
 }
+```
 
+---
 
-5) if-else and switch
+# 3) Variables
 
-if-else
+## Invalid Variable Names
 
-Featureif Statementif-else Statementif-else if ladderPurposeExecutes a block if condition is trueExecutes one block if true, another if falseChecks multiple conditions sequentially, executes block for first true condition
+```c
+int 1stNumber;
+float my-salary;
+char int;
+int double;
+float my$var;
+```
 
+Reasons:
 
-NOTE: if if if = checks ALL conditions every time
-NOTE: if else if = stops at first true condition = more efficient 🤝
+* Cannot start with a digit.
+* Cannot contain hyphens.
+* Cannot use reserved keywords.
+* Cannot contain unsupported special characters.
 
+## Types of Variables
 
+### Static Variable
 
-c// Example 1 — even or odd
+A variable that retains its value throughout the program lifetime even after the function ends.
+
+### Automatic Variable
+
+A variable that exists only while a function is running and gets destroyed when the function ends.
+
+---
+
+# 4) Data Types
+
+| Types                 | Data Types                       |
+| --------------------- | -------------------------------- |
+| Basic Data Type       | int, char, float, double         |
+| Derived Data Type     | array, pointer, structure, union |
+| Enumeration Data Type | enum                             |
+| Void Data Type        | void                             |
+
+---
+
+# 5) if-else and switch
+
+## Even or Odd Program
+
+```c
 #include <stdio.h>
+
 int main(){
     int a = 0;
-    printf("Enter a no : ");
+
+    printf("Enter a number: ");
     scanf("%d", &a);
-    if (a%2 == 0){
-        printf("even no");
-    } else {
-        printf("odd no");
+
+    if(a % 2 == 0){
+        printf("Even number");
     }
+    else{
+        printf("Odd number");
+    }
+
     return 0;
 }
+```
 
-// Example 2 — largest of 3 numbers (using && which literally means AND in C)
+## AND Operator
+
+`&&` in C literally means AND.
+
+### Largest of Three Numbers
+
+```c
 #include <stdio.h>
+
 int main(){
     int a, b, c;
-    printf("enter 3 numbers : ");
+
+    printf("Enter 3 numbers: ");
     scanf("%d %d %d", &a, &b, &c);
-    if (a>=b && a>=c){
+
+    if(a >= b && a >= c){
         printf("%d is the largest number", a);
-    } else if (b>=a && b>=c){
+    }
+    else if(b >= a && b >= c){
         printf("%d is the largest number", b);
-    } else {
+    }
+    else{
         printf("%d is the largest number", c);
     }
+
     return 0;
 }
+```
 
-// Example 3 — grade checker
+## Important Note
+
+```text
+if if if
+```
+
+Checks ALL conditions every time.
+
+```text
+if else if
+```
+
+Stops at the first true condition and is usually more efficient.
+
+### Grade Program
+
+```c
 #include <stdio.h>
+
 int main(){
     int a = 0;
-    printf("enter your marks : ");
+
+    printf("Enter your marks: ");
     scanf("%d", &a);
-    if (a>=0 && a<=39){
-        printf("You got a F");
-    } else if (a>=40 && a<=89){
-        printf("You got a C");
-    } else {
-        printf("You got a A");
+
+    if(a >= 0 && a <= 39){
+        printf("You got F");
     }
+    else if(a >= 40 && a <= 89){
+        printf("You got C");
+    }
+    else{
+        printf("You got A");
+    }
+
     return 0;
 }
+```
 
-Nested if — two ways to write same thing
+## Nested Conditions
 
-c// way 1
-if (a > 0){
-    if (a > 100){...}
+```c
+if(a > 0){
+    if(a > 100){
+        ...
+    }
 }
+```
 
-// way 2 — cleaner
-if (a > 0 && a > 100){...}
-else if (a > 0){...}
+Can sometimes be simplified depending on the condition.
 
+---
 
-NOTE: so u dont write a>0 till a>100
+# SWITCH Statement
 
+A switch statement executes different code blocks based on the value of an expression.
 
-
-switch
-
-switch statement is a flow control structure that enables us to run several code segments based on the value of a given expression
-
-
-NOTE: switch's syntax is cleaner but i cant use it to set conditions as u can do in if-else if-else chain. Also switch executes faster.
-
-
-
-c// Example 1 — basic switch
+```c
 #include <stdio.h>
+
 int main(){
-    int a = 0;
-    printf("enter a number : ");
+    int a;
+
+    printf("Enter a number: ");
     scanf("%d", &a);
+
     switch(a){
-    case 1:
-        printf("the number is 1");
-        break;
-    case 2:
-        printf("the number is 2");
-        break;
-    case 3:
-        printf("the number is 3");
-        break;
-    default:
-        printf("the number neither is 1,2 nor 3");
+        case 1:
+            printf("The number is 1");
+            break;
+
+        case 2:
+            printf("The number is 2");
+            break;
+
+        case 3:
+            printf("The number is 3");
+            break;
+
+        default:
+            printf("The number is neither 1, 2 nor 3");
     }
+
     return 0;
 }
+```
 
-// Example 2 — calculator using switch
+### Notes
+
+* Switch syntax is cleaner.
+* Switch cannot handle conditions like `a > 10`.
+* Switch may be faster in some situations because the compiler can use a jump table internally.
+
+---
+
+# 6) LOOPS
+
+## DO-WHILE LOOP
+
+The body executes first and then the condition is checked.
+
+### Example
+
+```c
 #include <stdio.h>
-int main(){
-    int a, b;
-    char x;
-    printf("Enter an operator (+,-,/,*): ");
-    scanf("%c", &x);
-    printf("Enter 1st number: ");
-    scanf("%d", &a);
-    printf("Enter 2nd number: ");
-    scanf("%d", &b);
-    switch(x){
-    case '+':
-        printf("%d + %d = %d\n", a, b, a+b);
-        break;
-    case '-':
-        printf("%d - %d = %d\n", a, b, a-b);
-        break;
-    case '*':
-        printf("%d * %d = %d\n", a, b, a*b);
-        break;
-    case '/':
-        if (b != 0)
-            printf("%d / %d = %d\n", a, b, a/b);
-        else
-            printf("Error! division cant be done by 0");
-        break;
-    default:
-        printf("Invalid operator");
-    }
-    return 0;
-}
 
-
-6) Loops
-
-do-while loop
-
-Executes the block first, then checks the condition — so it always runs at least once.
-
-c// Example 1 — print 1 to 5
-#include <stdio.h>
 int main(){
     int a = 1;
+
     do{
-        printf("%d", a);
+        printf("%d\n", a);
         a++;
     }
     while(a <= 5);
+
     return 0;
 }
+```
 
-// Example 2 — 5 times table
+### Example
+
+```c
 #include <stdio.h>
+
 int main(){
     int a = 1;
+
     do{
-        printf("%d\n", a*5);
+        printf("%d\n", a * 5);
         a++;
     }
     while(a <= 10);
+
     return 0;
 }
+```
 
-// Example 3 — any number's times table (user input)
+---
+
+## WHILE LOOP
+
+The condition is checked before execution.
+
+### Example
+
+```c
 #include <stdio.h>
+
 int main(){
-    int i = 1, num = 0;
-    printf("Enter a no : ");
-    scanf("%d", &num);
-    do{
-        printf("%d\n", num*i);
+    int b = 6;
+    int i = 1;
+
+    while(i < 11){
+        printf("%d X %d = %d\n", b, i, b * i);
         i++;
     }
-    while(i <= 10);
+
     return 0;
 }
+```
 
-
-Notes will keep updating as I learn more — follow the journey on GitHub and LinkedIn
