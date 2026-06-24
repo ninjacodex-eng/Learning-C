@@ -421,4 +421,78 @@ int main(){
     return 0;
 }
 ```
+**FOR LOOP**
+used when we know how many times we gotta repeat smtg(loop).
+
+for(variable declaration; condition; loop{a++} or {i++})
+{
+  printf statement
+}
+
+eg:->
+\#include <stdio.h>
+int main(){
+    for(int a=0;a<=10;a+=2)
+    {
+        printf("This no is - %d\n",a);
+    }
+    return 0;
+}
+
+**NESTED LOOPS**
+
+Outer_loop    
+ {    
+    Inner_loop    
+     {     
+       // inner loop statements.    
+     }    
+      // outer loop statements.    
+   }
+
+eg -->
+
+\#include <stdio.h>
+int main(){
+    int a;
+    printf("enter a no : ");
+    scanf("%d",&a);
+    for(int i=1; i<=a; i++)
+    {
+        for(int j=1; j<=10; j++)
+        {
+            printf("%d",i\*j);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+**INFINITE LOOPS**
+
+ for( ; ; )  
+ {  
+   // Code that runs infinitely.  
+ }
+eg--->
+
+\#include <stdio.h>
+int main(){  
+    int a=1;
+    for(;;)
+    {
+        printf("It is an Infinite for loop iteration: %d\n",a);
+        a++;
+    }
+      return 0;
+}
+
+**NOTE** - u can use infinite loops in do-while and while by putting the condition in while 1.
+eg ->>>>
+while(1)
+{
+ //statement
+}
+
+
 
