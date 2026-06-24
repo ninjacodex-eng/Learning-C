@@ -421,78 +421,102 @@ int main(){
     return 0;
 }
 ```
-**FOR LOOP**
-used when we know how many times we gotta repeat smtg(loop).
+# For Loops in C
 
-for(variable declaration; condition; loop{a++} or {i++})
-{
-  printf statement
+A `for` loop is used when we know exactly how many times we need to repeat a block of code (iterate).
+
+### Standard Syntax
+```c
+for (initialization; condition; update) {
+    // Code to be executed
 }
+```
 
-eg:->
-\#include <stdio.h>
-int main(){
-    for(int a=0;a<=10;a+=2)
-    {
-        printf("This no is - %d\n",a);
+### Basic For Loop Example
+This example prints even numbers up to 10 by incrementing the variable by 2 in each iteration.
+
+```c
+#include <stdio.h>
+
+int main() {
+    for (int a = 0; a <= 10; a += 2) {
+        printf("This number is - %d\n", a);
     }
     return 0;
 }
+```
 
-**NESTED LOOPS**
+---
 
-Outer_loop    
- {    
-    Inner_loop    
-     {     
-       // inner loop statements.    
-     }    
-      // outer loop statements.    
-   }
+## Nested Loops
 
-eg -->
+A nested loop is simply a loop placed inside another loop. 
+* The **outer loop** triggers the inner loop. 
+* The **inner loop** must finish all its iterations before the outer loop advances to its next step.
 
-\#include <stdio.h>
-int main(){
+### Syntax
+```c
+for (/* outer initialization, condition, update */) {
+    for (/* inner initialization, condition, update */) {
+        // inner loop statements
+    }
+    // outer loop statements
+}
+```
+
+### Nested Loop Example: Multiplication Table
+This program takes a number as input and prints the multiplication tables from 1 up to that number.
+
+```c
+#include <stdio.h>
+
+int main() {
     int a;
-    printf("enter a no : ");
-    scanf("%d",&a);
-    for(int i=1; i<=a; i++)
-    {
-        for(int j=1; j<=10; j++)
-        {
-            printf("%d",i\*j);
+    printf("Enter a number: ");
+    scanf("%d", &a);
+    
+    // Outer loop controls the current table being printed
+    for (int i = 1; i <= a; i++) {
+        // Inner loop prints the 10 multiples for the current table
+        for (int j = 1; j <= 10; j++) {
+            printf("%d\t", i * j); // \t adds a tab space for cleaner output
         }
-        printf("\n");
+        printf("\n"); // Move to the next line after completing one table
     }
     return 0;
 }
+```
 
-**INFINITE LOOPS**
+---
 
- for( ; ; )  
- {  
-   // Code that runs infinitely.  
- }
-eg--->
+## Infinite Loops
 
-\#include <stdio.h>
-int main(){  
-    int a=1;
-    for(;;)
-    {
-        printf("It is an Infinite for loop iteration: %d\n",a);
+An infinite loop runs endlessly because its condition never evaluates to false. It will continue running until the program is manually terminated or a `break` statement is encountered.
+
+### Syntax
+```c
+for ( ; ; ) {
+    // Code that runs infinitely
+}
+```
+
+### Infinite Loop Example
+
+```c
+#include <stdio.h>
+
+int main() {  
+    int a = 1;
+    for (;;) {
+        printf("It is an infinite for loop iteration: %d\n", a);
         a++;
     }
-      return 0;
+    return 0;
 }
+```
 
-**NOTE** - u can use infinite loops in do-while and while by putting the condition in while 1.
-eg ->>>>
-while(1)
-{
- //statement
-}
+> **Pro-Tip:** You can also create infinite loops using `while` and `do-while` loops by simply passing `1` (which represents "true" in C) as the condition. 
+> Example: `while (1) { /* infinite code */ }`
 
 
 
