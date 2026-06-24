@@ -6,7 +6,7 @@ A collection of my beginner C programming notes and examples.
 
 # Contents
 
-1. Hello World Program
+1. Hello World Program  
 2. Data Variations
 3. scanf() Function
 4. Variables
@@ -273,7 +273,7 @@ Checks ALL conditions every time.
 if else if
 ```
 
-Stops at the first true condition and is usually more efficient.
+Stops at the first true condition and is usually more efficient.....
 
 ### Grade Program
 
