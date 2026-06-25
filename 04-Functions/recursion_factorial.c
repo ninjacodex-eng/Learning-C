@@ -10,4 +10,5 @@ int main(){
     printf("enter a no : ");
     scanf("%d",&x);
     printf("%d",factorial(x));
+    return 0;
 }
